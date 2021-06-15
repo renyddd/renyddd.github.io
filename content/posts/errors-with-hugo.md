@@ -1,0 +1,15 @@
+---
+title: "Errors With Hugo"
+date: 2021-06-15T17:08:06+08:00
+draft: false
+---
+
+# 一些错误记录
+
+### 1 部署后未收录文章
+仔细阅读[官方文档](https://gohugo.io/getting-started/quick-start/)
+> Drafts do not get deployed; once you finish a post, update the header of the post to say draft: false. More info here.
+
+### 2 选择发布分支
+gh-pages
+
