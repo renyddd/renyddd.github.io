@@ -1,3 +1,4 @@
 baseURL = "https://renyddd.github.io/"
 languageCode = "en-us"
 title = "renyddd blog site"
+theme = "ananke"
