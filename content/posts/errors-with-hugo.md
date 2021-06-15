@@ -2,6 +2,9 @@
 title: "Errors With Hugo"
 date: 2021-06-15T17:08:06+08:00
 draft: false
+tags: ["hugo"]
+categories: ["hugo"]
+series: ["hugo系列"]
 ---
 
 # 一些错误记录
@@ -13,3 +16,5 @@ draft: false
 ### 2 选择发布分支
 gh-pages
 
+### 3 Github Actions
+在同一个仓库的时候直接无脑复制就好了。
