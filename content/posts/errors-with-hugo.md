@@ -7,6 +7,17 @@ categories: ["hugo"]
 series: ["hugo系列"]
 ---
 
+# 开始使用
+
+### 一片新的博客
+
+```bash
+cd WOWRKDIR
+hugo new posts/gdb-use.md
+```
+
+ 
+
 # 一些错误记录
 
 ### 1 部署后未收录文章
@@ -14,7 +25,7 @@ series: ["hugo系列"]
 > Drafts do not get deployed; once you finish a post, update the header of the post to say draft: false. More info here.
 
 ### 2 选择发布分支
-gh-pages
+github 端 gh-pages。
 
 ### 3 Github Actions
-在同一个仓库的时候直接无脑复制就好了。
+在同一个仓库的时候直接无脑复制官方 .github/workflows/main.yml 文件就好了。
