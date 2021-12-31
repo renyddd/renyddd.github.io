@@ -1,0 +1,368 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Rust Tutorial | renyddd blog site</title>
+<meta name=viewport content="width=device-width,minimum-scale=1">
+<meta name=description content="引用于： https://kaisery.github.io/trpl-zh-cn/title-page.html Notes Base 变量默认是不可改变的 immutable error[E0384]: cannot assign twice to immutable variable `x` --> src/main.rs:3:5 2 | let x = 1; | - | | | first assignment to `x` | help: consider making this binding mutable: `mut x` 3 | x = 6; | ^^^^^ cannot assign twice to immutable variable 例如,使用">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=ROBOTS content="NOINDEX, NOFOLLOW">
+<link rel=stylesheet href=/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css>
+<meta property="og:title" content="Rust Tutorial">
+<meta property="og:description" content="引用于： https://kaisery.github.io/trpl-zh-cn/title-page.html Notes Base 变量默认是不可改变的 immutable error[E0384]: cannot assign twice to immutable variable `x` --> src/main.rs:3:5 2 | let x = 1; | - | | | first assignment to `x` | help: consider making this binding mutable: `mut x` 3 | x = 6; | ^^^^^ cannot assign twice to immutable variable 例如,使用">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.renyddd.top/posts/rust-tutorial/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-09-24T21:26:15+08:00">
+<meta property="article:modified_time" content="2021-09-24T21:26:15+08:00">
+<meta itemprop=name content="Rust Tutorial">
+<meta itemprop=description content="引用于： https://kaisery.github.io/trpl-zh-cn/title-page.html Notes Base 变量默认是不可改变的 immutable error[E0384]: cannot assign twice to immutable variable `x` --> src/main.rs:3:5 2 | let x = 1; | - | | | first assignment to `x` | help: consider making this binding mutable: `mut x` 3 | x = 6; | ^^^^^ cannot assign twice to immutable variable 例如,使用"><meta itemprop=datePublished content="2021-09-24T21:26:15+08:00">
+<meta itemprop=dateModified content="2021-09-24T21:26:15+08:00">
+<meta itemprop=wordCount content="4386">
+<meta itemprop=keywords content="rust,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Rust Tutorial">
+<meta name=twitter:description content="引用于： https://kaisery.github.io/trpl-zh-cn/title-page.html Notes Base 变量默认是不可改变的 immutable error[E0384]: cannot assign twice to immutable variable `x` --> src/main.rs:3:5 2 | let x = 1; | - | | | first assignment to `x` | help: consider making this binding mutable: `mut x` 3 | x = 6; | ^^^^^ cannot assign twice to immutable variable 例如,使用">
+</head>
+<body class="ma0 avenir bg-near-white">
+<header>
+<div class=bg-black>
+<nav class="pv3 ph3 ph4-ns" role=navigation>
+<div class="flex-l justify-between items-center center">
+<a href=/ class="f3 fw2 hover-white no-underline white-90 dib">
+renyddd blog site
+</a>
+<div class="flex-l items-center">
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main class=pb7 role=main>
+<article class="flex-l flex-wrap justify-between mw8 center ph3">
+<header class="mt4 w-100">
+<aside class="instapaper_ignoref b helvetica tracked">
+POSTS
+</aside>
+<div id=sharing class=mt3>
+<a href="https://www.facebook.com/sharer.php?u=https://blog.renyddd.top/posts/rust-tutorial/" class="facebook no-underline" aria-label="share on Facebook"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765 50.32h6.744V33.998h4.499l.596-5.624h-5.095l.007-2.816c0-1.466.14-2.253 2.244-2.253h2.812V17.68h-4.5c-5.405.0-7.307 2.729-7.307 7.317v3.377h-3.369v5.625h3.369V50.32zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd"/></svg>
+</a>
+<a href="https://twitter.com/share?url=https://blog.renyddd.top/posts/rust-tutorial/&text=Rust%20Tutorial" class="twitter no-underline" aria-label="share on Twitter"><svg height="32" style="enable-background:new 0 0 67 67" viewBox="0 0 67 67" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167 22.283c-2.619.953-4.274 3.411-4.086 6.101l.063 1.038-1.048-.127c-3.813-.487-7.145-2.139-9.974-4.915l-1.383-1.377-.356 1.017c-.754 2.267-.272 4.661 1.299 6.271.838.89.649 1.017-.796.487-.503-.169-.943-.296-.985-.233-.146.149.356 2.076.754 2.839.545 1.06 1.655 2.097 2.871 2.712l1.027.487-1.215.021c-1.173.0-1.215.021-1.089.467.419 1.377 2.074 2.839 3.918 3.475l1.299.444-1.131.678c-1.676.976-3.646 1.526-5.616 1.568C19.775 43.256 19 43.341 19 43.405c0 .211 2.557 1.397 4.044 1.864 4.463 1.377 9.765.783 13.746-1.568 2.829-1.673 5.657-5 6.978-8.221.713-1.716 1.425-4.851 1.425-6.354.0-.975.063-1.102 1.236-2.267.692-.678 1.341-1.419 1.467-1.631.21-.403.188-.403-.88-.043-1.781.636-2.033.551-1.152-.402.649-.678 1.425-1.907 1.425-2.267.0-.063-.314.042-.671.233-.377.212-1.215.53-1.844.72l-1.131.361-1.027-.7c-.566-.381-1.361-.805-1.781-.932C39.766 21.902 38.131 21.944 37.167 22.283zM33 64C16.432 64 3 50.569 3 34S16.432 4 33 4s30 13.431 30 30S49.568 64 33 64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.renyddd.top/posts/rust-tutorial/&title=Rust%20Tutorial" class="linkedin no-underline" aria-label="share on LinkedIn"><svg height="32" style="enable-background:new 0 0 65 65" viewBox="0 0 65 65" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M50.837 48.137V36.425c0-6.275-3.35-9.195-7.816-9.195-3.604.0-5.219 1.983-6.119 3.374V27.71h-6.79c.09 1.917.0 20.427.0 20.427h6.79V36.729c0-.609.044-1.219.224-1.655.49-1.22 1.607-2.483 3.482-2.483 2.458.0 3.44 1.873 3.44 4.618v10.929H50.837zM22.959 24.922c2.367.0 3.842-1.57 3.842-3.531-.044-2.003-1.475-3.528-3.797-3.528s-3.841 1.524-3.841 3.528c0 1.961 1.474 3.531 3.753 3.531H22.959zM34 64C17.432 64 4 50.568 4 34 4 17.431 17.432 4 34 4s30 13.431 30 30c0 16.568-13.432 30-30 30zM26.354 48.137V27.71h-6.789v20.427h6.789z" style="fill-rule:evenodd;clip-rule:evenodd;fill:"/></svg>
+</a>
+</div>
+<h1 class="f1 athelas mt3 mb1">Rust Tutorial</h1>
+<time class="f6 mv4 dib tracked" datetime=2021-09-24T21:26:15+08:00>September 24, 2021</time>
+</header>
+<div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>引用于：</p>
+<blockquote>
+<p><a href=https://kaisery.github.io/trpl-zh-cn/title-page.html>https://kaisery.github.io/trpl-zh-cn/title-page.html</a></p>
+</blockquote>
+<h2 id=notes>Notes</h2>
+<h3 id=base>Base</h3>
+<p>变量默认是不可改变的 immutable</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust>error[E0384]: <span style=color:#a6e22e>cannot</span> assign twice to immutable variable <span style=color:#960050;background-color:#1e0010>`</span>x<span style=color:#960050;background-color:#1e0010>`</span>
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>5</span>
+<span style=color:#ae81ff>2</span> <span style=color:#f92672>|</span>     <span style=color:#66d9ef>let</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+  <span style=color:#f92672>|</span>         <span style=color:#f92672>-</span>
+  <span style=color:#f92672>|</span>         <span style=color:#f92672>|</span>
+  <span style=color:#f92672>|</span>         first assignment to <span style=color:#960050;background-color:#1e0010>`</span>x<span style=color:#960050;background-color:#1e0010>`</span>
+  <span style=color:#f92672>|</span>         help: <span style=color:#a6e22e>consider</span> making this binding mutable: <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#66d9ef>mut</span> x<span style=color:#960050;background-color:#1e0010>`</span>
+<span style=color:#ae81ff>3</span> <span style=color:#f92672>|</span>     x <span style=color:#f92672>=</span> <span style=color:#ae81ff>6</span>;
+  <span style=color:#f92672>|</span>     <span style=color:#f92672>^^^^^</span> cannot assign twice to immutable variable
+</code></pre></div><p>例如,使用大型数据结构时,适当地使用可变变量,可能比复制和返回新分配的实例更快。对于较小的数据结构,总是创建新实例,采用更偏向函数式的编程⻛格,可能会使代码更易理解,为可读性而牺牲性能或许是值得的。</p>
+<p>不可变量与 const 所声明的常量的区别：常量可以在任何作用域中声明,包括全局作用域,这在一个值需要被很多部分的代码用到时很有用。</p>
+<p>Shadowing：可以使用同名变量来隐藏一个变量，当再次使用 let 时,实际上创建了一个新变量,我们可以改变值的类型,但复用这个名字。</p>
+<p>Rust 是 静态类型 statically typed 语言,也就是说在编译时就必须知道所有变量的类型。</p>
+<p>标量(scalar)类型代表一个单独的值。Rust 有四种基本的标量类型:整型、浮点型、布尔类型和字符类型。</p>
+<p>Rust 的 char 类型的大小为四个字节(four bytes),并代表了一个 Unicode 标量值(Unicode Scalar Value).</p>
+<p>复合类型(Compound types)可以将多个值组合成一个类型。Rust 有两个原生的复合类型:元组(tuple)和数组(array)。</p>
+<ul>
+<li>元组是一个将多个其他类型的值组合进一个复合类型的主要方式。元组⻓度固定:一旦声明,其⻓度不会增大或缩小。</li>
+<li>数组中的每个元素的类型必须相同。Rust 中的数组与一些其他语言中的数组不同,因为 Rust 中的数组是固定⻓度的:一旦声明,它们的⻓度不能增⻓或缩小。 </li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+ <span style=color:#66d9ef>let</span>  t <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>];
+ println!(<span style=color:#e6db74>&#34;{}&#34;</span>, t);
+}
+
+error[E0277]: <span style=color:#960050;background-color:#1e0010>`</span>[{integer}; <span style=color:#ae81ff>3</span>]<span style=color:#960050;background-color:#1e0010>`</span> doesn<span style=color:#f92672>&#39;</span><span style=color:#a6e22e>t</span> implement <span style=color:#960050;background-color:#1e0010>`</span>std::fmt::Display<span style=color:#960050;background-color:#1e0010>`</span>
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>6</span>:<span style=color:#ae81ff>17</span>
+  <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>6</span> <span style=color:#f92672>|</span>  println!(<span style=color:#e6db74>&#34;{}&#34;</span>, t);
+  <span style=color:#f92672>|</span>                 <span style=color:#f92672>^</span> <span style=color:#960050;background-color:#1e0010>`</span>[{integer}; <span style=color:#ae81ff>3</span>]<span style=color:#960050;background-color:#1e0010>`</span> cannot be formatted with the default formatter
+  <span style=color:#f92672>|</span>
+  <span style=color:#f92672>=</span> help: <span style=color:#a6e22e>the</span> <span style=color:#66d9ef>trait</span> <span style=color:#960050;background-color:#1e0010>`</span>std::fmt::Display<span style=color:#960050;background-color:#1e0010>`</span> is not implemented <span style=color:#66d9ef>for</span> <span style=color:#960050;background-color:#1e0010>`</span>[{integer}; <span style=color:#ae81ff>3</span>]<span style=color:#960050;background-color:#1e0010>`</span>
+  <span style=color:#f92672>=</span> note: <span style=color:#a6e22e>in</span> format strings you may be able to <span style=color:#66d9ef>use</span> <span style=color:#960050;background-color:#1e0010>`</span>{:<span style=color:#f92672>?</span>}<span style=color:#960050;background-color:#1e0010>`</span> (or {:#<span style=color:#f92672>?</span>} <span style=color:#66d9ef>for</span> pretty<span style=color:#f92672>-</span>print) instead
+  <span style=color:#f92672>=</span> note: <span style=color:#a6e22e>this</span> error originates <span style=color:#66d9ef>in</span> the <span style=color:#66d9ef>macro</span> <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#75715e>$crate</span>::format_args_nl<span style=color:#960050;background-color:#1e0010>`</span> (<span style=color:#66d9ef>in</span> Nightly builds, run with <span style=color:#f92672>-</span>Z <span style=color:#66d9ef>macro</span><span style=color:#f92672>-</span>backtrace <span style=color:#66d9ef>for</span> more info)
+</code></pre></div><p>由上可见，数组的类型加长度决定了它的类型，这里和 golang 中的数组很像；</p>
+<p>vector 类型是标准库提供的一个 允许 增⻓和缩小⻓度的类似数组的集合类型。当不确定是应该使用数组还是 vector 的时候,你可能应该使用 vector。第八章会详细讨论 vector。</p>
+<p>Rust 代码中的函数和变量名使用 snake case 规范⻛格。在 snake case 中,所有字母都是小写并使用下划线分隔单词。</p>
+<p>在函数签名中,必须 声明每个参数的类型。这是 Rust 设计中一个经过慎重考虑的决定:要求在函数定义中提供类型注解,</p>
+<p>因为 Rust 是一⻔基于表达式(expressionbased)的语言,这是一个需要理解的(不同于其他语言)重要区别。其他语言并没有这样的区别：</p>
+<ul>
+<li>语句(Statements)是执行一些操作但不返回值的指令；</li>
+<li>表达式(Expressions)计算并产生一个值。</li>
+</ul>
+<p>语句 let y = 6; 中的 6 是一个表达式,它计算出的值是 6 。函数调用是一个表达式。宏调用是一个表达式。我们用来创建新作用域的大括号(代码块), {} ,也是一个表达式</p>
+<p>for 循环的安全性和简洁性使得它成为 Rust 中使用最多的循环结构。</p>
+<h3 id=ownership>Ownership</h3>
+<p>所有权(系统)是 Rust 最为与众不同的特性,它让 Rust 无需垃圾回收(garbage collector)即可保障内存安全。</p>
+<p>跟踪哪部分代码正在使用堆上的哪些数据,最大限度的减少堆上的重复数据的数量,以及清理堆上不再使用的数据确保不会耗尽空间,这些问题正是所有权系统要处理的。明白了所有权的存在就是为了管理堆数据,能够帮助解释为什么所有权要以这种方式工作。</p>
+<p>所有权的规则。当我们通过举例说明时,请谨记这些规则:</p>
+<ol>
+<li>
+<p>Rust 中的每一个值都有一个被称为其 所有者(owner)的变量。</p>
+</li>
+<li>
+<p>值在任一时刻有且只有一个所有者。</p>
+</li>
+<li>
+<p>当所有者(变量)离开作用域,这个值将被丢弃。</p>
+</li>
+</ol>
+<p>作用域(scope)是一个项(item)在程序中有效的范围。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    {
+        <span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;hello&#34;</span>;
+        println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+    }
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+
+}
+error[E0425]: <span style=color:#a6e22e>cannot</span> find value <span style=color:#960050;background-color:#1e0010>`</span>s<span style=color:#960050;background-color:#1e0010>`</span> <span style=color:#66d9ef>in</span> this scope
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>6</span>:<span style=color:#ae81ff>20</span>
+  <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>6</span> <span style=color:#f92672>|</span>     println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+  <span style=color:#f92672>|</span>  
+</code></pre></div><p>再来认识下「字符串字面值」与「String 类型」的区别：</p>
+<ol>
+<li>let s = &ldquo;hello&rdquo;; 变量 s 绑定到了一个字符串字面值，这个字符串值是硬编码进程序代码中的；类型为 &str，且存储在栈空间上；</li>
+<li>String 类型是一种存住在堆上的胖指针结构，可用来存储编译时大小未知或可变的文本。</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>); 
+s.push_str(<span style=color:#e6db74>&#34;, world!&#34;</span>);
+println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+</code></pre></div><h4 id=变量与数据交互的方式一移动>变量与数据交互的方式(一):移动</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#66d9ef>let</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>;
+    <span style=color:#66d9ef>let</span> y <span style=color:#f92672>=</span> x;
+
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, x);
+
+    <span style=color:#66d9ef>let</span> s1 <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+    <span style=color:#66d9ef>let</span> s2 <span style=color:#f92672>=</span> s1;
+
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s1);
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s2);
+}
+error[E0382]: <span style=color:#a6e22e>borrow</span> of moved value: <span style=color:#960050;background-color:#1e0010>`</span>s1<span style=color:#960050;background-color:#1e0010>`</span>
+  <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>10</span>:<span style=color:#ae81ff>20</span>
+   <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>7</span>  <span style=color:#f92672>|</span>     <span style=color:#66d9ef>let</span> s1 <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+   <span style=color:#f92672>|</span>         <span style=color:#f92672>--</span> <span style=color:#66d9ef>move</span> occurs because <span style=color:#960050;background-color:#1e0010>`</span>s1<span style=color:#960050;background-color:#1e0010>`</span> has <span style=color:#66d9ef>type</span> <span style=color:#960050;background-color:#1e0010>`</span>String<span style=color:#960050;background-color:#1e0010>`</span>, which does not implement the <span style=color:#960050;background-color:#1e0010>`</span>Copy<span style=color:#960050;background-color:#1e0010>`</span> <span style=color:#66d9ef>trait</span>
+<span style=color:#ae81ff>8</span>  <span style=color:#f92672>|</span>     <span style=color:#66d9ef>let</span> s2 <span style=color:#f92672>=</span> s1;
+   <span style=color:#f92672>|</span>              <span style=color:#f92672>--</span> value moved here
+<span style=color:#ae81ff>9</span>  <span style=color:#f92672>|</span> 
+<span style=color:#ae81ff>10</span> <span style=color:#f92672>|</span>     println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s1);
+   <span style=color:#f92672>|</span>                    <span style=color:#f92672>^^</span> value borrowed here after <span style=color:#66d9ef>move</span>
+</code></pre></div><p>rust 的 String 类型在栈中拥有一个指向堆中数据的指针，如果 let s2 = s1 语句导致了栈上的两个不同指针指向了相同的的对内存，那么当两者同时离开作用域而引发释放时，则会导致二次释放的错误。</p>
+<p>rust 的处理方式时，预期发生内存拷贝，不如认为 s1 不再有效，同时当 s1 离开作用域时也不会进行清理；这个操作就叫做移动 move。</p>
+<p>这种仅拷贝指针值的行为，听起来很像术语“浅拷贝”，rust 永远也不会创建数据的“深拷贝”。</p>
+<h4 id=变量与数据交互的方式二克隆>变量与数据交互的方式(二):克隆</h4>
+<p>当需要深度复制 String 类型堆上的数据时，则可使用类型方法 clone。</p>
+<h4 id=只在栈上的数据拷>只在栈上的数据:拷⻉</h4>
+<p>作为一个通用的规则,任何简单标量值的组合可以是 Copy 的,不需要分配内存或某种形式资源的类型是 Copy 的。</p>
+<h4 id=所有权与函数>所有权与函数</h4>
+<p>将值传递给函数，和给变量赋值在语意上都是相似的，因此也会发生移动或者复制。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+    take_ownership(s);
+
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>take_ownership</span>(s: String) {
+    println!(<span style=color:#e6db74>&#34;take_ownership: {}&#34;</span>, s);
+}
+
+error[E0382]: <span style=color:#a6e22e>borrow</span> of moved value: <span style=color:#960050;background-color:#1e0010>`</span>s<span style=color:#960050;background-color:#1e0010>`</span>
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>20</span>
+  <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>2</span> <span style=color:#f92672>|</span>     <span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+  <span style=color:#f92672>|</span>         <span style=color:#f92672>-</span> <span style=color:#66d9ef>move</span> occurs because <span style=color:#960050;background-color:#1e0010>`</span>s<span style=color:#960050;background-color:#1e0010>`</span> has <span style=color:#66d9ef>type</span> <span style=color:#960050;background-color:#1e0010>`</span>String<span style=color:#960050;background-color:#1e0010>`</span>, which does not implement the <span style=color:#960050;background-color:#1e0010>`</span>Copy<span style=color:#960050;background-color:#1e0010>`</span> <span style=color:#66d9ef>trait</span>
+<span style=color:#ae81ff>3</span> <span style=color:#f92672>|</span>     take_ownership(s);
+  <span style=color:#f92672>|</span>                    <span style=color:#f92672>-</span> value moved here
+<span style=color:#ae81ff>4</span> <span style=color:#f92672>|</span> 
+<span style=color:#ae81ff>5</span> <span style=color:#f92672>|</span>     println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+  <span style=color:#f92672>|</span>                    <span style=color:#f92672>^</span> value borrowed here after <span style=color:#66d9ef>move</span>
+</code></pre></div><p>函数的返回值也会转移所有权。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+    <span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> take_and_gives_back(s);
+
+    println!(<span style=color:#e6db74>&#34;{}&#34;</span>, s);
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>take_and_gives_back</span>(s: String) -&gt; String {
+    s
+}
+</code></pre></div><p>在一个函数中先获取所有权，再返回所有权是很啰嗦，rust 提供了引用 reference。</p>
+<h3 id=引用与借用-reference-and-borrowing>引用与借用 reference and borrowing</h3>
+<p>& 是引用符号，其允许你使用它的值但不获取所有权，即离开作用域后并不会丢弃。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#66d9ef>let</span> s1<span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+    <span style=color:#66d9ef>let</span> len <span style=color:#f92672>=</span> calculate_lenght(<span style=color:#f92672>&amp;</span>s1); <span style=color:#75715e>// 创建了指向 s1 的引用，但却不拥有它
+</span><span style=color:#75715e></span>
+    println!(<span style=color:#e6db74>&#34;len: {}&#34;</span>, len);
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>calculate_lenght</span>(s: <span style=color:#66d9ef>&amp;</span>String) -&gt; <span style=color:#66d9ef>usize</span> { <span style=color:#75715e>// 签名中的 &amp; 也表明它的类型是一个引用
+</span><span style=color:#75715e></span>    s.push_str(<span style=color:#e6db74>&#34;, world&#34;</span>);
+    s.len()
+}
+
+error[E0596]: <span style=color:#a6e22e>cannot</span> borrow <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#f92672>*</span>s<span style=color:#960050;background-color:#1e0010>`</span> <span style=color:#66d9ef>as</span> mutable, <span style=color:#66d9ef>as</span> it is behind a <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#f92672>&amp;</span><span style=color:#960050;background-color:#1e0010>`</span> reference
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>9</span>:<span style=color:#ae81ff>5</span>
+  <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>8</span> <span style=color:#f92672>|</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>calculate_lenght</span>(s: <span style=color:#66d9ef>&amp;</span>String) -&gt; <span style=color:#66d9ef>usize</span> {
+  <span style=color:#f92672>|</span>                        <span style=color:#f92672>-------</span> help: <span style=color:#a6e22e>consider</span> changing this to be a mutable reference: <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> String<span style=color:#960050;background-color:#1e0010>`</span>
+<span style=color:#ae81ff>9</span> <span style=color:#f92672>|</span>     s.push_str(<span style=color:#e6db74>&#34;, world&#34;</span>);
+  <span style=color:#f92672>|</span>     <span style=color:#f92672>^</span> <span style=color:#960050;background-color:#1e0010>`</span>s<span style=color:#960050;background-color:#1e0010>`</span> is a <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#f92672>&amp;</span><span style=color:#960050;background-color:#1e0010>`</span> reference, so the data it refers to cannot be borrowed <span style=color:#66d9ef>as</span> mutable
+</code></pre></div><p>我们将获取引用作为函数参数称为借用 borrowing，引用默认不允许修改值。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() {
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello&#34;</span>);
+    change(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> s);
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>change</span>(some_string: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> String) {
+    some_string.push_str(<span style=color:#e6db74>&#34;, world&#34;</span>);
+}
+</code></pre></div><p>首先,必须将 s 改为 mut 。然后必须创建一个可变引用 &mut s 和接受一个可变引用 some_string: &mut String 。</p>
+<p>不过可变引用有一个很大的限制:在特定作用域中的特定数据只能有一个可变引用。</p>
+<p>让我们概括一下之前对引用的讨论:</p>
+<ol>
+<li>在任意给定时间,要么只能有一个可变引用,要么只能有多个不可变引用。</li>
+<li>引用必须总是有效的。</li>
+</ol>
+<h4 id=slice-类型>Slice 类型</h4>
+<p>上面的引用是仅获取值而不得到所有权，另一个不拥有所有权的数据类型是 Slice。</p>
+<p>slice 允许你引用集合中一段连续的元素序列,而不用引用整个集合。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>let</span>  s <span style=color:#f92672>=</span> String::from(<span style=color:#e6db74>&#34;hello， world&#34;</span>);
+    
+<span style=color:#66d9ef>let</span> hello <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>s[<span style=color:#ae81ff>0</span><span style=color:#f92672>..</span><span style=color:#ae81ff>5</span>];
+<span style=color:#66d9ef>let</span> world <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>s[<span style=color:#ae81ff>6</span><span style=color:#f92672>..</span><span style=color:#ae81ff>11</span>];
+println!(<span style=color:#e6db74>&#34;{}, {}&#34;</span>, hello, world);
+</code></pre></div><p>hello 类型为 &str；同样的，存储在二进制文件中的字符串字面值也是 &str，这同样是一个不可变引用。</p>
+<h3 id=struct>Struct</h3>
+<p>注意整个实例必须是可变的;Rust 并不允许只将某个字段标记为可变。记一些不同指出：</p>
+<ol>
+<li>元组结构体(tuple structs)：有着结构体名称提供的含义,但没有具体的字段名,只有字段的类型；</li>
+<li>类单元结构体(unit-like structs)：因为它们类似于 () ,即 unit 类型。类单元结构体常常在你想要在某个类型上实现 trait 但不需要在类型中存储数据的时候发挥作用。</li>
+</ol>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Rectangle</span> {
+    width: <span style=color:#66d9ef>u32</span>,
+    height: <span style=color:#66d9ef>u32</span>,
+}
+
+<span style=color:#66d9ef>impl</span> Rectangle {
+    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>area</span>(<span style=color:#f92672>&amp;</span>self) -&gt; <span style=color:#66d9ef>u32</span> {
+        self.width <span style=color:#f92672>*</span> self.height
+    }
+}
+</code></pre></div><p>方法语法(method syntax)：为了使函数定义于 Rectangle 的上下文中,我们开始了一个 impl 块( impl 是 implementation 的缩写)。接着将 area 函数移动到 impl 大括号中,并将签名中的第一个(在这里也是唯一一个)参数和函数体中其他地方的对应参数改成 self 。</p>
+<p>我们并不想获取所有权,只希望能够读取结构体中的数据,而不是写入。如果想要在方法中改变调用方法的实例,需要将第一个参数改为 &mut self 。通过仅仅使用 self 作为第一个参数来使方法获取实例的所有权是很少⻅的;这种技术通常用在当方法将 self 转换成别的实例的时候,这时我们想要防止调用者在转换之后使用原始的实例。</p>
+<p>关联函数(associated functions)：impl 块的另一个有用的功能是:允许在 impl 块中定义 不 以 self 作为参数的函数。它们与结构体相关联。它们仍是函数而不是方法,因为它们并不作用于一个结构体的实例。你已经使用过 String::from 关联函数了。</p>
+<h3 id=枚举和模式匹配>枚举和模式匹配</h3>
+<p>枚举(enumerations),也被称作 enums。枚举允许你通过列举可能的成员(variants) 来定义一个类型。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() { 
+    <span style=color:#66d9ef>let</span> four <span style=color:#f92672>=</span> IpAddrKind::V4;
+    route(four);
+    route(IpAddrKind::V6);
+}
+
+<span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>IpAddrKind</span> {
+    V4,
+    V6,
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>route</span>(ip_type: <span style=color:#a6e22e>IpAddrKind</span>) {}
+</code></pre></div><p>如果仅用上述代码，就会发现目前还没有一个实际存储 IP 地址值的方法，我们仅知道的是其类型。</p>
+<p>我们直接将数据附加到枚举的每个成员上,这样就不需要一个额外的结构体了;不过你也可以将任意类型的数据放入枚举成员中：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>IpAddrKind</span> {
+    V4(String),
+    V6(String),
+}
+
+
+<span style=color:#66d9ef>impl</span> IpAddrKind {
+    <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>call</span>(<span style=color:#f92672>&amp;</span>self) {
+    }
+}
+</code></pre></div><p>如果我们使用不同的结构体,由于它们都有不同的类型,我们将不能像轻易的定义一个能够处理这些不同类型的结构体的函数；而枚举可以，因为枚举是单独一个类型。</p>
+<p>就像可以使用 impl 来为结构体定义方法那样，方法也可以在枚举上定义。</p>
+<h4 id=option-枚举>Option 枚举</h4>
+<p>Option 是标准库定义的一个枚举。 Option 类型应用广泛因为它编码了一个非常普遍的场景,即一个值要么有值要么没值。</p>
+<p>空值尝试表达的概念仍然是有意义的:空值是一个因为某种原因目前无效或缺失的值。
+问题不在于概念而在于具体的实现。为此,Rust 并没有空值,不过它确实拥有一个可以编码存在或不存在概念的枚举。这个枚举是 Option ,而且它定义于标准库中 <a href=https://doc.rust-lang.org/std/option/>https://doc.rust-lang.org/std/option/</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>enum</span> Option<span style=color:#f92672>&lt;</span>T<span style=color:#f92672>&gt;</span> {
+    None,
+    Some(T),
+}
+</code></pre></div><p>Option 枚举被包含在了 prelude 之中,你不需要将其显式引入作用域。另外,它的成员也是如此,可以不需要 Option:: 前缀就能来直接使用 Some 和 None 。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>let</span> n <span style=color:#f92672>=</span> Some(<span style=color:#ae81ff>5</span>);
+<span style=color:#66d9ef>let</span> s <span style=color:#f92672>=</span> Some(<span style=color:#e6db74>&#34;a string&#34;</span>);
+<span style=color:#66d9ef>let</span> a: Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> None;
+</code></pre></div><p>当使用 None 时需要指明 Option 的类型，因为编译器仅通过 None 无法进行推断。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust>    <span style=color:#66d9ef>let</span> x: <span style=color:#66d9ef>i32</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>;
+    <span style=color:#66d9ef>let</span> y: Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> Some(<span style=color:#ae81ff>8</span>);
+    <span style=color:#66d9ef>let</span> sum <span style=color:#f92672>=</span> x <span style=color:#f92672>+</span> y;
+
+error[E0277]: <span style=color:#a6e22e>cannot</span> add <span style=color:#960050;background-color:#1e0010>`</span>Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span><span style=color:#960050;background-color:#1e0010>`</span> to <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#66d9ef>i32</span><span style=color:#960050;background-color:#1e0010>`</span>
+ <span style=color:#f92672>-</span>-&gt; <span style=color:#a6e22e>src</span><span style=color:#f92672>/</span>main.rs:<span style=color:#ae81ff>5</span>:<span style=color:#ae81ff>17</span>
+  <span style=color:#f92672>|</span>
+<span style=color:#ae81ff>5</span> <span style=color:#f92672>|</span>     <span style=color:#66d9ef>let</span> sum <span style=color:#f92672>=</span> x <span style=color:#f92672>+</span> y;
+  <span style=color:#f92672>|</span>                 <span style=color:#f92672>^</span> no implementation <span style=color:#66d9ef>for</span> <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#66d9ef>i32</span> <span style=color:#f92672>+</span> Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span><span style=color:#960050;background-color:#1e0010>`</span>
+  <span style=color:#f92672>|</span>
+  <span style=color:#f92672>=</span> help: <span style=color:#a6e22e>the</span> <span style=color:#66d9ef>trait</span> <span style=color:#960050;background-color:#1e0010>`</span>Add<span style=color:#f92672>&lt;</span>Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;&gt;</span><span style=color:#960050;background-color:#1e0010>`</span> is not implemented <span style=color:#66d9ef>for</span> <span style=color:#960050;background-color:#1e0010>`</span><span style=color:#66d9ef>i32</span><span style=color:#960050;background-color:#1e0010>`</span>
+</code></pre></div><p>当在 Rust 中拥有一个像 i32 这样类型的值时,编译器确保它总是有一个有效的值。我们可以自信使用而无需做空值检查。只有当使用 Option (或者任何用到的类型)的时候需要担心可能没有值,而编译器会确保我们在使用值之前处理了为空的情况。换句话说,在对 Option 进行 T 的运算之前必须将其转换为 T 。通常这能帮助我们捕获到空值最常⻅的问题之一:假设某值不为空但实on际上为空的情况。</p>
+<h4 id=match-控制流运算符>match 控制流运算符</h4>
+<p>match 控制流运算符允许我们将一个值与一系列的模式相比较,并根据相匹配的模式执行相应代码。</p>
+<p>匹配 Option：获取一个 Option 的值，如果不为空则加一</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>plus_one</span>(x: Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span>) -&gt; Option<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>i32</span><span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>match</span> x {
+        None <span style=color:#f92672>=&gt;</span> None,
+        Some(i) <span style=color:#f92672>=&gt;</span> Some(i<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>),
+    }
+}
+</code></pre></div><p>_ 模式会匹配所有的值。通过将其放置于其他分支之后, _ 将会匹配所有之前没有指定的可能的值，以免因未穷举到所有情况而编译失败。</p>
+<h4 id=if-let-控制流>if let 控制流</h4>
+<p>if let 语法让我们以一种不那么冗⻓的方式结合 if 和 let ,来处理只匹配一个模式的值而忽略其他模式的情况。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>let</span> some_u8_value <span style=color:#f92672>=</span> Some(<span style=color:#ae81ff>3</span><span style=color:#66d9ef>u8</span>);
+<span style=color:#66d9ef>if</span> <span style=color:#66d9ef>let</span> Some(<span style=color:#ae81ff>3</span>) <span style=color:#f92672>=</span> some_u8_value {
+    println!(<span style=color:#e6db74>&#34;three&#34;</span>);
+}
+</code></pre></div><p>如上当我们仅想对 Some(3) 进行操作，而去忽略 None 或任何不等于 Some(3) 的值；其中这里的表达式对应 match，而模式对应第一个分支。可以认为 if let 是 match 的一个语法糖；可以在 if let 中包含一个 else 。 else 块中的代码与 match 表达式中的 _ 分支块中的代码相同。</p>
+<h2 id=模块系统>模块系统</h2>
+<ul class=pa0>
+<li class=list>
+<a href=/tags/rust class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">rust</a>
+</li>
+</ul>
+<div class="mt6 instapaper_ignoref">
+</div>
+</div>
+<aside class="w-30-l mt6-l">
+</aside>
+</article>
+</main>
+<footer class="bg-black bottom-0 w-100 pa3" role=contentinfo>
+<div class="flex justify-between">
+<a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://blog.renyddd.top/>
+&copy; renyddd blog site 2021
+</a>
+<div>
+</div>
+</div>
+</footer>
+</body>
+</html>

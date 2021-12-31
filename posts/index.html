@@ -5,7 +5,7 @@
 <title>renyddd blog site</title>
 <meta name=viewport content="width=device-width,minimum-scale=1">
 <meta name=description content>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=ROBOTS content="NOINDEX, NOFOLLOW">
 <link rel=stylesheet href=/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css>
 <link href=/posts/index.xml rel=alternate type=application/rss+xml title="renyddd blog site">
@@ -46,12 +46,40 @@ Posts
 <div class="bg-white mb3 pa4 gray overflow-hidden">
 <span class="f6 db">Posts</span>
 <h1 class="f3 near-black">
+<a href=https://blog.renyddd.top/posts/sicp/ class="link black dim">
+Sicp
+</a>
+</h1>
+<div class="nested-links f5 lh-copy nested-copy-line-height">
+使用整理 emacs 安装 geiser https://medium.com/@joshfeltonm/setting-up-emacs-for-sicp-from-scratch-daa6473885c5 (require 'package) (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages") t) (package-initialize) (package-refresh-contents) (setq geiser-mit-binary "/usr/local/bin/scheme") (setq geiser-active-implementations '(mit)) 安装后可在 scm 源码文件处： M-x run-geiser RET C-x o C-x C-e ;; Eval sexp before point 更多请参见：https://www.non
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+<div class="bg-white mb3 pa4 gray overflow-hidden">
+<span class="f6 db">Posts</span>
+<h1 class="f3 near-black">
+<a href=https://blog.renyddd.top/posts/rust-tutorial/ class="link black dim">
+Rust Tutorial
+</a>
+</h1>
+<div class="nested-links f5 lh-copy nested-copy-line-height">
+引用于： https://kaisery.github.io/trpl-zh-cn/title-page.html Notes Base 变量默认是不可改变的 immutable error[E0384]: cannot assign twice to immutable variable `x` --> src/main.rs:3:5 2 | let x = 1; | - | | | first assignment to `x` | help: consider making this binding mutable: `mut x` 3 | x = 6; | ^^^^^ cannot assign twice to immutable variable 例如,使用
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+<div class="bg-white mb3 pa4 gray overflow-hidden">
+<span class="f6 db">Posts</span>
+<h1 class="f3 near-black">
 <a href=https://blog.renyddd.top/posts/golang-tips/ class="link black dim">
 Golang Tips
 </a>
 </h1>
 <div class="nested-links f5 lh-copy nested-copy-line-height">
-golang 小技巧 本文主要记录一些在各种文档中看到的有趣且使用的 golang 小技巧代码片段： os.Signal ref：https://golang.org/pkg/databa
+golang 小技巧 本文主要记录一些在各种文档中看到的有趣且使用的 golang 小技巧代码片段。 os.Signal ref：https://golang.org/pkg/databa
 </div>
 </div>
 </div>
@@ -121,7 +149,7 @@ Errors With Hugo
 </a>
 </h1>
 <div class="nested-links f5 lh-copy nested-copy-line-height">
-开始使用 一片新的博客 cd WOWRKDIR hugo new posts/gdb-use.md 一些错误记录 1 部署后未收录文章 仔细阅读官方文档 Drafts do not get deployed; once you finish a post, update the header of the post to say draft: false. More info here. 2 选择发布分支 github 端
+开始使用 一篇新的博客 cd WOWRKDIR hugo new posts/gdb-use.md 一些错误记录 1 部署后未收录文章 仔细阅读官方文档 Drafts do not get deployed; once you finish a post, update the header of the post to say draft: false. More info here. 2 选择发布分支 github 端
 </div>
 </div>
 </div>
