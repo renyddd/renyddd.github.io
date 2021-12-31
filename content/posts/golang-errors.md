@@ -40,6 +40,4 @@ func (e *errorString) Error() string {
 }
 ```
 
-
-
-to be done.
+## kubernetes error 汇聚

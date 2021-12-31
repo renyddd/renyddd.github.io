@@ -7,9 +7,9 @@ categories: ["hugo"]
 series: ["hugo系列"]
 ---
 
-# 开始使用
+## 开始使用
 
-### 一片新的博客
+### 一篇新的博客
 
 ```bash
 cd WOWRKDIR
@@ -18,7 +18,7 @@ hugo new posts/gdb-use.md
 
  
 
-# 一些错误记录
+## 一些错误记录
 
 ### 1 部署后未收录文章
 仔细阅读[官方文档](https://gohugo.io/getting-started/quick-start/)
